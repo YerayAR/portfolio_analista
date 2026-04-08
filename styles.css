@@ -28,6 +28,23 @@ body {
     overflow-x: hidden;
 }
 
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    background: var(--accent-cyan);
+    color: var(--bg-color);
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 1200;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
 #canvas {
     position: fixed;
     top: 0;
@@ -148,6 +165,42 @@ nav {
     margin-right: auto;
 }
 
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.highlight-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 1.2rem;
+    text-align: left;
+    backdrop-filter: blur(16px);
+}
+
+.highlight-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    margin-bottom: 0.45rem;
+}
+
+.highlight-label {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
 .btn {
     display: inline-block;
     padding: 1rem 2.5rem;
@@ -171,6 +224,18 @@ nav {
     background: var(--accent-cyan);
     color: var(--bg-color);
     box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+}
+
+.btn-secondary {
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-pink);
+    color: var(--text-primary);
+    box-shadow: 0 0 24px rgba(255, 0, 85, 0.22);
 }
 
 /* Sections Base */
@@ -242,7 +307,7 @@ section {
 .timeline-content:hover {
     transform: translateX(10px);
     border-color: var(--accent-cyan);
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.05);
 }
 
 .timeline-date {
@@ -291,7 +356,7 @@ section {
 .skill-card:hover {
     transform: translateY(-10px);
     border-color: var(--accent-purple);
-    box-shadow: 0 10px 30px rgba(112, 0, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(112, 0, 255, 0.3), inset 0 0 20px rgba(112, 0, 255, 0.05);
 }
 
 .skill-icon {
@@ -358,8 +423,9 @@ section {
 }
 
 .project-card:hover {
-    border-color: rgba(255, 0, 85, 0.4);
-    box-shadow: 0 20px 40px rgba(255, 0, 85, 0.15);
+    border-color: rgba(255, 0, 85, 0.6);
+    box-shadow: 0 20px 50px rgba(255, 0, 85, 0.2), inset 0 0 20px rgba(255, 0, 85, 0.05);
+    background: rgba(15, 15, 25, 0.8);
 }
 
 .project-img {
@@ -431,6 +497,24 @@ section {
     font-family: 'Fira Code', monospace;
     font-size: 0.85rem;
     color: var(--accent-cyan);
+}
+
+.project-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-metrics span {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    padding: 0.45rem 0.8rem;
+    text-transform: uppercase;
 }
 
 /* Contact Section */
@@ -512,4 +596,73 @@ footer {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .hero-highlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    section {
+        padding: 5rem 1.25rem;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+        letter-spacing: -1px;
+    }
+
+    .project-info,
+    .timeline-content,
+    .contact-container {
+        padding: 1.5rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    #canvas {
+        display: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
 }

@@ -1,3 +1,5 @@
+var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Intersection Observer for scroll animations
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
@@ -41,7 +43,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 
         window.scrollTo({
             top: targetPosition,
-            behavior: "smooth"
+            behavior: prefersReducedMotion ? "auto" : "smooth"
         });
     });
 });
